@@ -61,6 +61,7 @@ class TadaApp
      *
      * @param $target
      * @return Models\Todo[]
+     * @throws FileSystemException
      */
     public function parseTargetRecursive($target)
     {
