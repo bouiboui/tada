@@ -2,7 +2,6 @@
 
 Command-line tool to parse TODOs from files.
 
-[![Latest Version on Packagist][ico-version]][link-packagist]
 [![Software License][ico-license]][link-license] 
 
 Parses files and finds TODOs. 
@@ -41,10 +40,8 @@ $ ./tada.phar -r folder_name
 
 Unlicense. Public domain, basically. Please treat it kindly. See [unlicense.org][link-license] for more information. 
 
-[ico-version]: https://img.shields.io/packagist/v/bouiboui/tada.svg?style=flat-square
 [ico-license]: https://img.shields.io/badge/license-Unlicense-brightgreen.svg?style=flat-square
 
-[link-packagist]: https://packagist.org/packages/bouiboui/tada
 [link-author]: https://github.com/bouiboui
 [link-license]: http://unlicense.org/
 [link-contributors]: ../../contributors
