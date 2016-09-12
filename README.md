@@ -2,7 +2,7 @@
 
 Command-line tool to parse TODOs from files.
 
-[![Software License][ico-license]][link-license] 
+[![Software License][ico-license]][link-license] [![SensioLabsInsight](https://insight.sensiolabs.com/projects/fad5e8cb-7e74-44d1-a6af-f58373276fef/mini.png)](https://insight.sensiolabs.com/projects/fad5e8cb-7e74-44d1-a6af-f58373276fef)
 
 Parses files and finds TODOs. 
 Provides an *Exporter* interface to hook an action to found TODOs, could be a Trello task exporter, a JIRA issue exporter, a Github Issue exporter, you get the idea.
