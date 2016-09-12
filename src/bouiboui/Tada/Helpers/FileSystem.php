@@ -42,7 +42,7 @@ class FileSystem
         // Returns the path of every item in the folder
         $paths = array_map(function ($fileName) use ($path) {
             return realpath($path . '/' . $fileName);
-        }, array_diff(scandir($path), ['.', '..']));
+        }, array_diff(scandir($path), array('.', '..')));
 
         // Recursive search for children paths
         if ($options & static::RECURSIVE) {

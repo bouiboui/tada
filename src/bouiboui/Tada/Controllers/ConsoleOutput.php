@@ -60,8 +60,9 @@ class ConsoleOutput implements Output
     public function displayTodo(Todo $todo)
     {
         // Subtitle style
-        $formatSubtitle = function ($string) {
-            return $this->format($string)->addYellow();
+        $instance = $this;
+        $formatSubtitle = function ($string) use ($instance) {
+            return $instance->format($string)->addYellow();
         };
 
         // Context style

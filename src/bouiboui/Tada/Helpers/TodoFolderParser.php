@@ -9,6 +9,8 @@ use bouiboui\Tada\Controllers\TodoParser;
 class TodoFolderParser
 {
     /**
+     * Parse a folder and return TODOs
+     *
      * @param $folderPath
      * @param int $options
      * @return \bouiboui\Tada\Models\Todo[]
@@ -16,7 +18,7 @@ class TodoFolderParser
      */
     public function parse($folderPath, $options = null)
     {
-        $todos = [];
+        $todos = array();
         $fileSystem = new FileSystem;
         $parser = new TodoParser;
         // For each file in the folder

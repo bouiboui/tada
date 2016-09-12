@@ -39,7 +39,7 @@ class ConsoleFormatter implements OutputFormatter
     public function addUnderline()
     {
         return $this->addFormat(function ($string) {
-            return static::UNDERLINE_ON . $string . static::UNDERLINE_OFF;
+            return ConsoleFormatter::UNDERLINE_ON . $string . ConsoleFormatter::UNDERLINE_OFF;
         });
     }
 
@@ -52,21 +52,21 @@ class ConsoleFormatter implements OutputFormatter
     public function addBold()
     {
         return $this->addFormat(function ($string) {
-            return static::FORMAT_BOLD_ON . $string . static::FORMAT_BOLD_OFF;
+            return ConsoleFormatter::FORMAT_BOLD_ON . $string . ConsoleFormatter::FORMAT_BOLD_OFF;
         });
     }
 
     public function setNormal()
     {
         return $this->addFormat(function ($string) {
-            return static::FORMAT_COLOR_DEFAULT . $string;
+            return ConsoleFormatter::FORMAT_COLOR_DEFAULT . $string;
         });
     }
 
     public function addYellow()
     {
         return $this->addFormat(function ($string) {
-            return static::FORMAT_COLOR_YELLOW . $string;
+            return ConsoleFormatter::FORMAT_COLOR_YELLOW . $string;
         });
     }
 
@@ -78,28 +78,28 @@ class ConsoleFormatter implements OutputFormatter
     public function addItalic()
     {
         return $this->addFormat(function ($string) {
-            return static::ITALICS_ON . $string . static::ITALICS_OFF;
+            return ConsoleFormatter::ITALICS_ON . $string . ConsoleFormatter::ITALICS_OFF;
         });
     }
 
     public function addRed()
     {
         return $this->addFormat(function ($string) {
-            return static::FORMAT_COLOR_RED . $string;
+            return ConsoleFormatter::FORMAT_COLOR_RED . $string;
         });
     }
 
     public function addGreen()
     {
         return $this->addFormat(function ($string) {
-            return static::FORMAT_COLOR_GREEN . $string;
+            return ConsoleFormatter::FORMAT_COLOR_GREEN . $string;
         });
     }
 
     public function addGrey()
     {
         return $this->addFormat(function ($string) {
-            return static::FORMAT_COLOR_GREY . $string;
+            return ConsoleFormatter::FORMAT_COLOR_GREY . $string;
         });
     }
 
