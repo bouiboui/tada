@@ -1,8 +1,8 @@
 <?php
 
+use bouiboui\Tada\Controllers\ConsoleOutput;
 use bouiboui\Tada\Exceptions\ArgumentException;
 use bouiboui\Tada\Exceptions\FileSystemException;
-use bouiboui\Tada\Controllers\ConsoleOutput;
 use bouiboui\Tada\Exceptions\TadaException;
 use bouiboui\Tada\TadaApp;
 
@@ -21,16 +21,29 @@ try {
     // Ignore the first value of $argv (the file that runs this script)
     array_shift($argv);
 
+    // Look for recursive option
+    $recursive = in_array(TadaApp::OPTION_RECURSIVE_SHORT, $argv, true)
+        || in_array(TadaApp::OPTION_RECURSIVE_LONG, $argv, true);
+
+    $todos = array();
+
     // For each argument
     foreach ($argv as $target) {
+        // Skip flags
+        if (in_array($target, TadaApp::POSSIBLE_OPTIONS, true)) {
+            continue;
+        }
         try {
 
+            $todos = $recursive
+                ? $app->parseTargetRecursive($target)
+                : $app->parseTarget($target);
+
             // Parse files/dirs
-            foreach ($app->parseTarget($target) as $todo) {
+            foreach ($todos as $todo) {
                 // Display results in the console
                 $output->displayTodo($todo);
                 $app->exportTodo($todo);
-                $output->printLine('');
             }
 
         } catch (FileSystemException $e) {
@@ -39,7 +52,7 @@ try {
     }
 
     // All done!
-    $output->printSuccess('Done.');
+    $output->printSuccess(count($todos) . ' TODO(s) found.');
 
 } catch (ArgumentException $e) {
     $output->printError($e->getMessage());

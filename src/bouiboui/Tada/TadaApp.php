@@ -14,6 +14,13 @@ use bouiboui\Tada\Nulls\NullOutput;
 
 class TadaApp
 {
+    const OPTION_RECURSIVE_SHORT = '-r';
+    const OPTION_RECURSIVE_LONG = '--recursive';
+    const POSSIBLE_OPTIONS = array(
+        TadaApp::OPTION_RECURSIVE_SHORT,
+        TadaApp::OPTION_RECURSIVE_LONG
+    );
+
     /** @var Output $output */
     private $output;
     /** @var Exporter $exporter */
@@ -23,32 +30,6 @@ class TadaApp
     {
         $this->output = new NullOutput;
         $this->exporter = new NullExporter;
-    }
-
-
-    /**
-     * Return an array of TODOs from the specified target.
-     * Target can be either a file or a folder.
-     *
-     * @param $target
-     * @return Todo[]
-     * @throws FileSystemException
-     */
-    public function parseTarget($target)
-    {
-        // Detect whether $target is a file or a folder
-        switch ((new FileSystem)->getType($target)) {
-
-            case FileSystem::TYPE_FILE:
-                return (new TodoFileParser)->parse($target);
-
-            case FileSystem::TYPE_FOLDER:
-                return (new TodoFolderParser)->parse($target);
-
-            default:
-                throw new FileSystemException('Invalid target type.');
-
-        }
     }
 
     /** @return Output */
@@ -73,6 +54,43 @@ class TadaApp
     public function exportTodo(Todo $todo)
     {
         $this->exporter->export($todo);
+    }
+
+    /**
+     * Parses target recursively
+     *
+     * @param $target
+     * @return Models\Todo[]
+     */
+    public function parseTargetRecursive($target)
+    {
+        return $this->parseTarget($target, FileSystem::RECURSIVE);
+    }
+
+    /**
+     * Return an array of TODOs from the specified target.
+     * Target can be either a file or a folder.
+     *
+     * @param $target
+     * @param int $options
+     * @return Models\Todo[]
+     * @throws FileSystemException
+     */
+    public function parseTarget($target, $options = null)
+    {
+        // Detect whether $target is a file or a folder
+        switch ((new FileSystem)->getType($target)) {
+
+            case FileSystem::TYPE_FILE:
+                return (new TodoFileParser)->parse($target);
+
+            case FileSystem::TYPE_FOLDER:
+                return (new TodoFolderParser)->parse($target, $options);
+
+            default:
+                throw new FileSystemException('Invalid target type.');
+
+        }
     }
 
 }

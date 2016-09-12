@@ -120,7 +120,7 @@ class TodoParserTest extends \PHPUnit_Framework_TestCase
 
     public function testParseFile()
     {
-        $todos = $this->parser->parse((new FileSystem)->readFile(realpath(TESTS_DATA_DIR . '/todo.multiple.php')));
+        $todos = $this->parser->parse((new FileSystem)->readFile(realpath(TESTS_DATA_DIR . '/subfolder/todo.multiple.php')));
         self::assertCount(2, $todos);
         self::assertCount(4, explode(PHP_EOL, $todos[0]->getContext()));
     }
@@ -128,6 +128,13 @@ class TodoParserTest extends \PHPUnit_Framework_TestCase
     public function testParseFolder()
     {
         $todos = (new TodoFolderParser)->parse(realpath(TESTS_DATA_DIR));
+        self::assertCount(8, $todos);
+        self::assertCount(8, explode(PHP_EOL, $todos[0]->getContext()));
+    }
+
+    public function testParseFolderRecursive()
+    {
+        $todos = (new TodoFolderParser)->parse(realpath(TESTS_DATA_DIR), FileSystem::RECURSIVE);
         self::assertCount(15, $todos);
         self::assertCount(8, explode(PHP_EOL, $todos[0]->getContext()));
     }

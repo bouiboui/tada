@@ -12,6 +12,8 @@ class FileSystem
     const TYPE_FILE = 1;
     const TYPE_FOLDER = 2;
 
+    const RECURSIVE = 0x1;
+
     /**
      * Returns file contents
      *
@@ -31,14 +33,27 @@ class FileSystem
      * Returns a list of absolute paths to files from a folder
      * Ignores folders, . and ..
      *
-     * @param $folderPath
-     * @return string[]
+     * @param $path
+     * @param int $options
+     * @return \string[]
      */
-    public function scanFolder($folderPath)
+    public function scanFolder($path, $options = null)
     {
-        return array_filter(array_map(function ($filePath) use ($folderPath) {
-            return realpath($folderPath . '/' . $filePath);
-        }, array_diff(scandir($folderPath), ['.', '..'])), 'is_file');
+        // Returns the path of every item in the folder
+        $paths = array_map(function ($fileName) use ($path) {
+            return realpath($path . '/' . $fileName);
+        }, array_diff(scandir($path), ['.', '..']));
+
+        // Recursive search for children paths
+        if ($options & static::RECURSIVE) {
+            foreach (array_filter($paths, 'is_dir') as $subpath) {
+                foreach ($this->scanFolder($subpath, static::RECURSIVE) as $subItems) {
+                    $paths[] = $subItems;
+                }
+            }
+        }
+        // Returns only the files in $path
+        return array_filter($paths, 'is_file');
     }
 
     /**
