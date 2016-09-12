@@ -10,7 +10,7 @@ use bouiboui\Tada\Models\Todo;
  *
  * @package bouiboui\Tada\Interfaces
  */
-interface Exporter
+interface ExporterInterface
 {
     public function export(Todo $todo);
 }

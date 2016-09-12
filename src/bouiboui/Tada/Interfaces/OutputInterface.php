@@ -4,7 +4,7 @@
 namespace bouiboui\Tada\Interfaces;
 
 
-interface Output
+interface OutputInterface
 {
     public function printLines(array $lines);
 
@@ -14,7 +14,7 @@ interface Output
 
     /**
      * @param $input
-     * @return OutputFormatter
+     * @return OutputFormatterInterface
      */
     public function format($input);
 
