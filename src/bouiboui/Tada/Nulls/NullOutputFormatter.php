@@ -8,54 +8,52 @@ use bouiboui\Tada\Interfaces\OutputFormatter;
 
 class NullOutputFormatter implements OutputFormatter
 {
-
     public function setInput($string)
     {
+        return $this;
     }
 
-    /** @return OutputFormatter */
     public function addUnderline()
     {
+        return $this;
     }
 
-    /** @return OutputFormatter */
     public function addBold()
     {
         return $this;
     }
 
-    /** @return OutputFormatter */
     public function setNormal()
     {
         return $this;
     }
 
-    /** @return OutputFormatter */
     public function addYellow()
     {
         return $this;
     }
 
-    /** @return OutputFormatter */
     public function addItalic()
     {
         return $this;
     }
 
-    /** @return OutputFormatter */
     public function addRed()
     {
         return $this;
     }
 
-    /** @return OutputFormatter */
     public function addGreen()
     {
         return $this;
     }
 
-    /** @return OutputFormatter */
     public function addGrey()
+    {
+        return $this;
+    }
+
+    public function addNewLine()
     {
         return $this;
     }
