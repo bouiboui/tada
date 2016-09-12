@@ -26,6 +26,7 @@ try {
         || in_array(TadaApp::OPTION_RECURSIVE_LONG, $argv, true);
 
     $todos = array();
+    $todosCount = 0;
 
     // For each argument
     foreach ($argv as $target) {
@@ -38,6 +39,8 @@ try {
             $todos = $recursive
                 ? $app->parseTargetRecursive($target)
                 : $app->parseTarget($target);
+
+            $todosCount += count($todos);
 
             // Parse files/dirs
             foreach ($todos as $todo) {
@@ -52,7 +55,7 @@ try {
     }
 
     // All done!
-    $output->printSuccess(count($todos) . ' TODO(s) found.');
+    $output->printSuccess($todosCount . ' TODO(s) found.');
 
 } catch (ArgumentException $e) {
     $output->printError($e->getMessage());
