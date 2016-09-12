@@ -19,6 +19,7 @@ class ConsoleOutput implements Output
         $this->printLine($this->format('Error')->addRed());
         // Error description
         $this->printLine($description);
+        $this->printLine($this->format()->setNormal());
     }
 
     /**
