@@ -73,7 +73,7 @@ class ConsoleOutput implements Output
             $formattedContext->setInput(' (empty)')->addItalic();
         }
 
-        // Todo style
+        // General style
         $this->printLines(array(
             $this->format('TODO')->addGrey()->addBold(),
             $formatSubtitle('Origin'),
