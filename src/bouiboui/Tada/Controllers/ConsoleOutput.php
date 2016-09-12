@@ -35,7 +35,7 @@ class ConsoleOutput implements Output
      * @param $input
      * @return ConsoleFormatter
      */
-    public function format($input)
+    public function format($input = null)
     {
         $formatter = new ConsoleFormatter();
         $formatter->setInput($input);
@@ -61,17 +61,17 @@ class ConsoleOutput implements Output
     {
         // Subtitle style
         $formatSubtitle = function ($string) {
-            return $this->format($string)
-                //->addUnderline()
-                ->addYellow();
+            return $this->format($string)->addYellow();
         };
 
+        // Context style
         $context = $todo->getContext();
         $formattedContext = $this->format($context)->setNormal();
         if ('' === $context) {
-            $formattedContext->setInput(' (empty)');
-            $formattedContext->addItalic();
+            $formattedContext->setInput(' (empty)')->addItalic();
         }
+
+        // Todo style
         $this->printLines(array(
             $this->format('TODO')->addGrey()->addBold(),
             $formatSubtitle('Origin'),
@@ -79,9 +79,9 @@ class ConsoleOutput implements Output
             $formatSubtitle('Contents'),
             $this->format($todo->getContents())->setNormal(),
             $formatSubtitle('Context'),
-            $formattedContext
+            $formattedContext,
+            $this->format()->addNewLine()
         ));
-
     }
 
     /**

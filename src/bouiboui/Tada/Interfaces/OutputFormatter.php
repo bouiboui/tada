@@ -6,6 +6,10 @@ namespace bouiboui\Tada\Interfaces;
 
 interface OutputFormatter
 {
+    /**
+     * @param $string
+     * @return OutputFormatter
+     */
     public function setInput($string);
 
     /** @return OutputFormatter */
@@ -31,5 +35,8 @@ interface OutputFormatter
 
     /** @return OutputFormatter */
     public function addGrey();
+
+    /** @return OutputFormatter */
+    public function addNewLine();
 
 }

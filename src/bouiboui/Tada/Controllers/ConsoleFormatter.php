@@ -33,6 +33,7 @@ class ConsoleFormatter implements OutputFormatter
     public function setInput($string)
     {
         $this->input = $string;
+        return $this;
     }
 
     public function addUnderline()
@@ -102,4 +103,9 @@ class ConsoleFormatter implements OutputFormatter
         });
     }
 
+    public function addNewLine()
+    {
+        $this->input .= static::NEW_LINE;
+        return $this;
+    }
 }
