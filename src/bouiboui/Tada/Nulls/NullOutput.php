@@ -6,7 +6,6 @@ namespace bouiboui\Tada\Nulls;
 
 use bouiboui\Tada\Interfaces\Output;
 use bouiboui\Tada\Interfaces\OutputFormatter;
-use bouiboui\Tada\Nulls\NullOutputFormatter;
 
 class NullOutput implements Output
 {
