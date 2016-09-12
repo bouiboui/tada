@@ -4,9 +4,9 @@
 namespace bouiboui\Tada\Nulls;
 
 
-use bouiboui\Tada\Interfaces\OutputFormatter;
+use bouiboui\Tada\Interfaces\OutputFormatterInterface;
 
-class NullOutputFormatter implements OutputFormatter
+class NullOutputFormatter implements OutputFormatterInterface
 {
     public function setInput($string)
     {

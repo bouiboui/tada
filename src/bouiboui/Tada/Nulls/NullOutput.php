@@ -4,10 +4,10 @@
 namespace bouiboui\Tada\Nulls;
 
 
-use bouiboui\Tada\Interfaces\Output;
-use bouiboui\Tada\Interfaces\OutputFormatter;
+use bouiboui\Tada\Interfaces\OutputInterface;
+use bouiboui\Tada\Interfaces\OutputFormatterInterface;
 
-class NullOutput implements Output
+class NullOutput implements OutputInterface
 {
 
     public function printLines(array $lines)
@@ -24,7 +24,7 @@ class NullOutput implements Output
 
     /**
      * @param $input
-     * @return OutputFormatter
+     * @return OutputFormatterInterface
      */
     public function format($input)
     {

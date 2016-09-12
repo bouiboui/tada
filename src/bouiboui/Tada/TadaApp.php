@@ -6,8 +6,8 @@ use bouiboui\Tada\Exceptions\FileSystemException;
 use bouiboui\Tada\Helpers\FileSystem;
 use bouiboui\Tada\Helpers\TodoFileParser;
 use bouiboui\Tada\Helpers\TodoFolderParser;
-use bouiboui\Tada\Interfaces\Exporter;
-use bouiboui\Tada\Interfaces\Output;
+use bouiboui\Tada\Interfaces\ExporterInterface;
+use bouiboui\Tada\Interfaces\OutputInterface;
 use bouiboui\Tada\Models\Todo;
 use bouiboui\Tada\Nulls\NullExporter;
 use bouiboui\Tada\Nulls\NullOutput;
@@ -21,9 +21,9 @@ class TadaApp
         TadaApp::OPTION_RECURSIVE_LONG
     );
 
-    /** @var Output $output */
+    /** @var OutputInterface $output */
     private $output;
-    /** @var Exporter $exporter */
+    /** @var ExporterInterface $exporter */
     private $exporter;
 
     public function __construct()
@@ -32,20 +32,20 @@ class TadaApp
         $this->exporter = new NullExporter;
     }
 
-    /** @return Output */
+    /** @return OutputInterface */
     public function getOutput()
     {
         return $this->output;
     }
 
-    /** @param Output $output */
-    public function setOutput(Output $output)
+    /** @param OutputInterface $output */
+    public function setOutput(OutputInterface $output)
     {
         $this->output = $output;
     }
 
-    /** @param Exporter $param */
-    public function setExporter(Exporter $param)
+    /** @param ExporterInterface $param */
+    public function setExporter(ExporterInterface $param)
     {
         $this->exporter = $param;
     }

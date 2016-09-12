@@ -4,9 +4,9 @@
 namespace bouiboui\Tada\Controllers;
 
 
-use bouiboui\Tada\Interfaces\OutputFormatter;
+use bouiboui\Tada\Interfaces\OutputFormatterInterface;
 
-class ConsoleFormatter implements OutputFormatter
+class ConsoleFormatter implements OutputFormatterInterface
 {
     const FORMAT_OFF = "\e[0m";
 

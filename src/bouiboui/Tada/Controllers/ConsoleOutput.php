@@ -4,10 +4,10 @@
 namespace bouiboui\Tada\Controllers;
 
 
-use bouiboui\Tada\Interfaces\Output;
+use bouiboui\Tada\Interfaces\OutputInterface;
 use bouiboui\Tada\Models\Todo;
 
-class ConsoleOutput implements Output
+class ConsoleOutput implements OutputInterface
 {
     /**
      * Displays a string formatted as an error
